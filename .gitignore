@@ -1,0 +1,3 @@
+# Solo la interfaz se publica: los SQL y el importador son herramientas locales
+*.sql
+importar.js

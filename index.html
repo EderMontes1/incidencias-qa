@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Incidencias QA — Ingenes</title>
+    <link rel="stylesheet" href="./estilo.css">
+</head>
+<body>
+
+    <!-- ===== LOGIN ===== -->
+    <div id="vista-login">
+        <div class="tarjeta-login">
+            <div class="mast-login">
+                <div class="exp-ceja">Ingenes · Plataforma QA</div>
+                <h1>Incidencias</h1>
+            </div>
+            <input type="text" id="login-nombre" placeholder="Nombre (solo al crear cuenta)" style="display:none;">
+            <input type="email" id="login-correo" placeholder="Correo">
+            <input type="password" id="login-clave" placeholder="Contraseña"
+                   onkeydown="if(event.key==='Enter') entrar()">
+            <button id="btn-entrar" onclick="entrar()">Entrar</button>
+            <button id="btn-registrar" onclick="alternarRegistro()">Crear cuenta</button>
+            <div id="msj-login"></div>
+        </div>
+    </div>
+
+    <!-- ===== APP ===== -->
+    <div id="vista-app" style="display:none;">
+        <div class="exp-hoja">
+            <div class="exp-mast">
+                <div class="titulo">
+                    <div class="exp-ceja">Ingenes · Plataforma QA</div>
+                    <h1>Incidencias</h1>
+                </div>
+                <span class="chip-usuario" id="chip-usuario"></span>
+                <button id="btn-admin" onclick="abrirAdmin()">Admin</button>
+                <button id="btn-salir" onclick="salir()">Salir</button>
+            </div>
+
+            <div class="exp-meta">
+                <select id="f-proyecto" onchange="repintar()"></select>
+                <select id="f-severidad" onchange="repintar()"></select>
+                <select id="f-qa" onchange="repintar()"></select>
+                <select id="f-dev" onchange="repintar()"></select>
+                <input type="text" id="f-texto" placeholder="Buscar en título / correo / folio"
+                       oninput="repintar()">
+                <button id="btn-refrescar" onclick="cargarTodo()" title="Recargar de la nube">⟳</button>
+                <span id="contador"></span>
+            </div>
+
+            <div id="fila-pills"></div>
+            <div id="lista-tarjetas"></div>
+        </div>
+
+        <!-- ===== DETALLE ===== -->
+        <div id="fondo-detalle" onclick="cerrarDetalle()"></div>
+        <div id="panel-detalle"></div>
+
+        <footer>Ingenes Tools · Plataforma de Incidencias · v1.4.0</footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+    <script src="./config.js"></script>
+    <script src="./app.js"></script>
+</body>
+</html>
